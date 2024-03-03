@@ -1,0 +1,19 @@
+import time
+import os
+import sys
+
+alarm = "ALARM!!!"
+
+def set_alarm(duration, desc):
+    duration = int(duration)
+    time.sleep(duration)
+    os.system("notify-send '{}' '{}'".format(alarm, desc))
+
+def main():
+    if len(sys.argv) != 3:
+        print("Usage: python alarm.py <duration_in_seconds> <description>")
+        sys.exit(1)
+    set_alarm(sys.argv[1], sys.argv[2])
+
+if __name__ == "__main__":
+    main()

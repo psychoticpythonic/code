@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Define the paths to check and add if necessary
+python_path="/home/notroot/code/python"
+bash_path="/home/notroot/code/bash"
+
+# Check if the paths are already in the PATH variable
+if [[ ":$PATH:" != *":$python_path:"* ]]; then
+    # Add the Python path if not present
+    export PATH="$PATH:$python_path"
+    echo "Added $python_path to PATH"
+fi
+
+if [[ ":$PATH:" != *":$bash_path:"* ]]; then
+    # Add the Bash path if not present
+    export PATH="$PATH:$bash_path"
+    echo "Added $bash_path to PATH"
+fi

@@ -1,0 +1,39 @@
+#!/bin/python
+
+import os
+import sys
+
+def ch(file_path, line_number, new_line):
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+    if 0 < line_number <= len(lines):
+        lines[line_number - 1] = new_line + '\n'
+        with open(file_path, 'w') as file:
+            file.writelines(lines)
+    else:
+        print("Line number out of range.")
+
+fp = "/home/notroot/.config/bspwm/bspwmrc"
+scriptFP = "/home/notroot/code/python/chgr"
+lineNum = 5
+bspGroups = ['Web', 'II', 'III', 'firewalld', 'Nano/TMX/VI-RC', 'sudo-script', 'polybar-icons', 'IX', 'X']
+lineNumScript = 19
+if len(sys.argv) != 3:
+	print("Usage: chgr <group number> <new group name>")
+	sys.exit(1)
+
+oldChangeTarget = int(sys.argv[1])
+changeTarget = oldChangeTarget - 1
+newNameTarget = sys.argv[2]
+bspGroups[changeTarget] = newNameTarget
+
+bspNewGroups = " ".join(bspGroups)
+#os.system("bspc monitor -d {}".format(newGroups))
+
+command = "bspc monitor -d " + bspNewGroups
+modify = str(bspGroups)
+script = "bspGroups = " + modify
+ch(fp, lineNum, command)
+ch(scriptFP, lineNumScript, script)
+os.system("bspc wm -r")
+

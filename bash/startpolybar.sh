@@ -6,3 +6,4 @@ polybar -cr /home/notroot/.config/polybar/bars/groups.ini &
 #polybar -cr /home/notroot/.config/polybar/bars/time.ini &
 #polybar -cr /home/notroot/.config/polybar/bars/polypomo.ini &
 #polybar -cr /home/notroot/.config/polybar/bars/net.ini &
+#xdo raise -N Polybar
